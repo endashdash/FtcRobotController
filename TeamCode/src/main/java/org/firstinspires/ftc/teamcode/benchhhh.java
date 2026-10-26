@@ -57,7 +57,11 @@ public class benchhhh extends OpMode {
                 ly2 = ly * (1 + 2 * rx);
                 lx3 = lx;
                 ly3 = ly;
-            } else {
+            } else if (rx==0){
+                lx2 = lx;
+                ly2 = ly;
+                lx3 = lx;
+                ly3 = ly;
                 bench.setMotorSpeed(0);
             }
             if (Math.abs(lx) > Math.abs(ly)) {
@@ -88,8 +92,6 @@ public class benchhhh extends OpMode {
                 bench.setTurning2Speed(0);
                 bench.setTurning3Speed(0);
             }
-
-
         }
     }
 }

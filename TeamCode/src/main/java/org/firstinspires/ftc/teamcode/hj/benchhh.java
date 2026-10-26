@@ -32,8 +32,5 @@ public class benchhh {
     public void setTurning3Speed(double speed) {
         m3.setPower(-speed);
     }
-
-
-
 }
 
