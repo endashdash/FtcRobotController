@@ -12,6 +12,7 @@ public class benchhhh extends OpMode {
     benchhh bench = new benchhh();
 
 
+
     @Override
     public void init() {
         bench.init(hardwareMap);
@@ -27,6 +28,7 @@ public class benchhhh extends OpMode {
         telemetry.addData("left joystick x", gamepad1.left_stick_x);
         telemetry.addData("right joystick x", gamepad1.right_stick_x);
         boolean abutton = gamepad1.a;
+        boolean b=gamepad1.b;
         double ly = gamepad1.left_stick_y;
         double lx = gamepad1.left_stick_x;
         double rx = gamepad1.right_stick_x;
@@ -34,6 +36,9 @@ public class benchhhh extends OpMode {
         double lx3 = 0;
         double ly2 = 0;
         double ly3 = 0;
+        if (b){
+
+        }
 
         if (abutton == true) {
             if (gh == true) {
@@ -44,10 +49,15 @@ public class benchhhh extends OpMode {
         } else {
             gh = true;
         }
-        if (num % 2 == 0) {
-            bench.setMotorSpeed(0.5);//.\gradlew installDebug
 
-            if (rx > 0) {
+        if (num % 2 == 0) {
+            bench.setMotorSpeed(-0.78);//.\gradlew installDebug
+        }
+        else  {
+            bench.setMotorSpeed(0);//.\gradlew installDebug
+        }
+
+        if (rx > 0) {
                 lx3 = lx * (1 - 2 * rx);
                 ly3 = ly * (1 - 2 * rx);
                 lx2 = lx;
@@ -62,7 +72,8 @@ public class benchhhh extends OpMode {
                 ly2 = ly;
                 lx3 = lx;
                 ly3 = ly;
-                bench.setMotorSpeed(0);
+                bench.setMotor2Speed(0);
+                bench.setMotor3Speed(0);
             }
             if (Math.abs(lx) > Math.abs(ly)) {
                 if (lx < 0) {
@@ -94,6 +105,4 @@ public class benchhhh extends OpMode {
             }
         }
     }
-}
-
 

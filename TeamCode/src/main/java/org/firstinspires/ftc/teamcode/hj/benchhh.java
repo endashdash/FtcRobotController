@@ -3,19 +3,23 @@ package org.firstinspires.ftc.teamcode.hj;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 
 public class benchhh {
     private DcMotor m;
     private DcMotor m2;
     private DcMotor m3;
+    private Servo servo;
     public void init(HardwareMap hwMap) {
         m = hwMap.get(DcMotor.class, "motor");
-        m.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        m.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         m2 = hwMap.get(DcMotor.class, "motor2");
         m2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         m3 = hwMap.get(DcMotor.class, "motor3");
         m3.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        servo =hwMap.get(Servo.class,"cover");
+
     }
     public void setMotorSpeed(double speed) {
         m.setPower(speed);
@@ -32,5 +36,9 @@ public class benchhh {
     public void setTurning3Speed(double speed) {
         m3.setPower(-speed);
     }
+    public void setcover(double angle){
+        servo.setPosition(angle);
+    }
+
 }
 
