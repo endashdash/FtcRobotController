@@ -8,6 +8,7 @@ import org.firstinspires.ftc.teamcode.hj.benchhh;
 
 
 @TeleOp
+
 public class benchhhh extends OpMode {
     benchhh bench = new benchhh();
 
@@ -18,8 +19,9 @@ public class benchhhh extends OpMode {
         bench.init(hardwareMap);
     }
 
-    private static int num = 1;
+    private static int num =1;
     private static boolean gh = true;
+    private static double speed;
 
     @Override
     public void loop() {
@@ -27,8 +29,10 @@ public class benchhhh extends OpMode {
         telemetry.addData("left joystick y", gamepad1.left_stick_y);
         telemetry.addData("left joystick x", gamepad1.left_stick_x);
         telemetry.addData("right joystick x", gamepad1.right_stick_x);
+        telemetry.addData("servo position",speed);
         boolean abutton = gamepad1.a;
-        boolean b=gamepad1.b;
+        boolean bbutton=gamepad1.b;
+        boolean xbutton=gamepad1.x;
         double ly = gamepad1.left_stick_y;
         double lx = gamepad1.left_stick_x;
         double rx = gamepad1.right_stick_x;
@@ -36,22 +40,33 @@ public class benchhhh extends OpMode {
         double lx3 = 0;
         double ly2 = 0;
         double ly3 = 0;
-        if (b){
+
+        if (bbutton&&speed>-0.05){
+            speed-=0.001;
+            bench.setcover(speed);
+
+        }else if(xbutton&&speed<=0){
+            speed+=0.001;
+            bench.setcover(speed);
 
         }
 
-        if (abutton == true) {
-            if (gh == true) {
-                num++;
-            }
-            gh = false;
+        if (abutton) {
+            if (gh==true) {
 
-        } else {
-            gh = true;
+                num++;
+                gh = false;
+            }
+        }
+        else{
+            gh=true;
         }
 
         if (num % 2 == 0) {
             bench.setMotorSpeed(-0.78);//.\gradlew installDebug
+           /*
+           do not do anything with this code
+            */
         }
         else  {
             bench.setMotorSpeed(0);//.\gradlew installDebug

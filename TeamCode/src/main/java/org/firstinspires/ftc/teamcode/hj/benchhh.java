@@ -18,7 +18,7 @@ public class benchhh {
         m2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         m3 = hwMap.get(DcMotor.class, "motor3");
         m3.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        servo =hwMap.get(Servo.class,"cover");
+        servo=hwMap.get(Servo.class,"cover");
 
     }
     public void setMotorSpeed(double speed) {
